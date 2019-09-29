@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    font-size:100px;
+}
+body{
+    font-size:0.15rem;
+    color: #333;
+    font-family: 'Helvetica Neue',Tahoma,Arial,PingFangSC-Regular,'Hiragino Sans GB','Microsoft Yahei',sans-serif;
+    background-color: #fff;
+}
+.row{
+    display:flex;
+    display:-webkit-flex;
+    flex-flow:row nowrap;
+}
+.row-wrap{
+    display:flex;
+    display:-webkit-flex;
+    flex-flow:row wrap;
+}
+.col{
+    display:flex;
+    display:-webkit-flex;
+    flex-flow:column nowrap;
+}
+a{
+    color:#8e8e93;
+    text-decoration: none;
+}
+@font-face {
+    font-family: 'iconfont';
+    src: url('../fonts/iconfont.eot');
+    src: url('../fonts/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/iconfont.woff2') format('woff2'),
+        url('../fonts/iconfont.woff') format('woff'),
+        url('../fonts/iconfont.ttf') format('truetype'),
+        url('../fonts/iconfont.svg#iconfont') format('svg');
+  }
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 0.25rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
