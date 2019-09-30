@@ -3,7 +3,7 @@
      <img src="./images/logo.png" alt="">
      <div class="login col">
         <p class="big">登录/注册</p>
-        <p class="small">登录后享受更多特权</p>
+        <p class="sma">登录后享受更多特权</p>
      </div>
      <span class="iconfont more">&#xe63a;</span>
   </router-link>
@@ -35,7 +35,7 @@ export default {
          line-height: 0.18rem;
          font-weight:700;
       }
-      .small{
+      .sma{
          font-size:0.12rem;
          line-height: 0.12rem;
       }
