@@ -1,14 +1,262 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import storage from './module/storage.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    list:[  //商家列表
+      {gid:1,order:0,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕鸡饭',grade:3.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:2,order:0,logo:require('./assets/images/item2.jpeg'),title:'手撕鸡饭',grade:4.5,num:200,start:10,time:50,charge:1,distance:0.8,menus:[
+        {sort:'优惠活动',menus:[
+          {pid:1,title:'南昌米粉1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'南昌米粉2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'南昌米粉3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'南昌米粉4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'南昌米粉5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'南昌米粉6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:3,order:0,logo:require('./assets/images/item3.png'),title:'秘制饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:4,order:0,logo:require('./assets/images/item2.jpeg'),title:'牛扒饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:5,order:0,logo:require('./assets/images/item1.jpeg'),title:'秘鸡饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:500,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+      ]},
+      {gid:6,order:0,logo:require('./assets/images/item2.jpeg'),title:'秘制手撕鸡饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:7,order:0,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕鸡饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:8,order:0,logo:require('./assets/images/item2.jpeg'),title:'手撕鸡饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+      {gid:9,order:0,logo:require('./assets/images/item3.png'),title:'秘制饭',grade:2.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
+        {sort:'新店优惠活动',menus:[
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'折扣套餐',menus:[
+          {pid:3,title:'特色炸年糕3',des:'主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:4,title:'特色炸年糕4',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'口味',menus:[
+          {pid:5,title:'特色炸年糕5',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:6,title:'特色炸年糕6',des:'限购一份',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]},
+        {sort:'满减套餐',menus:[
+          {pid:7,title:'特色炸年糕7',des:'限购一份脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:8,title:'特色炸年糕8',des:'原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:9,title:'特色炸年糕9',des:'不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+        ]}, 
+      ]},
+    ],
+    menus:[ //首页图片菜单
+      {
+        list:[
+          {href:"#",img:require('./assets/images/1.jpeg'),des:'美食'},
+          {href:"#",img:require('./assets/images/2.jpeg'),des:'夜宵'},
+          {href:"#",img:require('./assets/images/3.jpeg'),des:'商超便利'},
+          {href:"#",img:require('./assets/images/4.jpeg'),des:'水果'},
+          {href:"#",img:require('./assets/images/5.jpeg'),des:'医药健康'},
+          {href:"#",img:require('./assets/images/6.jpeg'),des:'浪漫鲜花'},
+          {href:"#",img:require('./assets/images/7.jpeg'),des:'跑腿代购'},
+          {href:"#",img:require('./assets/images/8.jpeg'),des:'汉堡披萨'},
+          {href:"#",img:require('./assets/images/9.jpeg'),des:'厨房生鲜'},
+          {href:"#",img:require('./assets/images/10.jpeg'),des:'甜品饮品'}
+        ]
+      },
+      {
+        list:[
+          {href:"#",img:require('./assets/images/6.jpeg'),des:'浪漫鲜花'},
+          {href:"#",img:require('./assets/images/7.jpeg'),des:'跑腿代购'},
+          {href:"#",img:require('./assets/images/8.jpeg'),des:'汉堡披萨'},
+          {href:"#",img:require('./assets/images/9.jpeg'),des:'厨房生鲜'},
+          {href:"#",img:require('./assets/images/10.jpeg'),des:'甜品饮品'},
+          {href:"#",img:require('./assets/images/1.jpeg'),des:'美食'},
+          {href:"#",img:require('./assets/images/2.jpeg'),des:'夜宵'},
+          {href:"#",img:require('./assets/images/3.jpeg'),des:'商超便利'},
+          {href:"#",img:require('./assets/images/4.jpeg'),des:'水果'},
+          {href:"#",img:require('./assets/images/5.jpeg'),des:'医药健康'}
+        ]
+      }
+    ],
+    orders:storage.get('orders')||{}, //选购信息
+    account:storage.get('account')||{name:'wzm',tel:13677587758,orders:[  //账户信息
+      {time:1570425770556,cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕gfdghfdshfdghsfgh鸡饭',action:'await',orders:[
+        {pid:1,title:'特色炸年糕1',price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),order:2},
+      ]},
+      {time:1570327200000,action:'finish',cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕gfdghfdshfdghsfgh鸡饭',orders:[
+        {pid:1,title:'特色炸年糕1',price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),order:2},
+      ]},
+    ],
+    address:[
+      {name:'王',sex:'先生',tel:'13677587758',tag:'公司',addr:'学生宿舍13栋江西省学生宿舍13栋发多少积分'},
+      {name:'刘',sex:'',tel:'13677587758',tag:'',addr:'学生宿舍13栋江西省学生宿舍13栋发多少积分'}
+    ]}
+  },
+  getters:{
 
   },
   mutations: {
-
+    changeAccount(state,played){
+      let action= played.action;
+      switch(action){
+        case 'add':
+          state.account.address.push(played.address);
+          break;
+        case 'remove':
+          state.account.address.splice(played.key,1);
+          break;
+        case 'add-order':
+          state.account.orders.unshift(played.order);
+          break;
+        case 'finish':
+          state.account.orders[played.key].action='finish';
+      }
+      storage.set('account',state.account);
+    },
+    changeOrder(state,played){
+      console.log(played);
+      let action=played.action;
+      switch(action){
+        case 'add':
+          state.orders['gid'+played.data.gid]=played.data;
+          break;
+        case 'remove':
+          delete  state.orders['gid'+played.gid]
+          break;
+      }
+      console.log(state.orders);
+      storage.set('orders',state.orders);
+    }
   },
   actions: {
 

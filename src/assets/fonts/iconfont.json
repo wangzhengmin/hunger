@@ -34,6 +34,13 @@
       "unicode_decimal": 58912
     },
     {
+      "icon_id": "1256458",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
       "icon_id": "1555754",
       "name": "left",
       "font_class": "left",
@@ -55,6 +62,13 @@
       "unicode_decimal": 59546
     },
     {
+      "icon_id": "2116272",
+      "name": "关闭",
+      "font_class": "close_icon",
+      "unicode": "e658",
+      "unicode_decimal": 58968
+    },
+    {
       "icon_id": "2480667",
       "name": "首页",
       "font_class": "shouye",
@@ -69,9 +83,16 @@
       "unicode_decimal": 58899
     },
     {
-      "icon_id": "4186493",
+      "icon_id": "3529836",
       "name": "定位",
       "font_class": "dingwei",
+      "unicode": "e761",
+      "unicode_decimal": 59233
+    },
+    {
+      "icon_id": "4186493",
+      "name": "定位",
+      "font_class": "dingwei1",
       "unicode": "e62f",
       "unicode_decimal": 58927
     },
@@ -118,6 +139,13 @@
       "unicode_decimal": 58881
     },
     {
+      "icon_id": "6582364",
+      "name": "加",
+      "font_class": "jia1",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
       "icon_id": "7093668",
       "name": "我的客服",
       "font_class": "wodekefu",
@@ -130,6 +158,20 @@
       "font_class": "dingdanguanli",
       "unicode": "e602",
       "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "10043413",
+      "name": "输入/填写",
+      "font_class": "xinbaniconshangchuan-",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "10232789",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e78f",
+      "unicode_decimal": 59279
     }
   ]
 }
