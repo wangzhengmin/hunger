@@ -1,11 +1,14 @@
 <template>
    <div style="background-color: #f4f4f4;height:100vh">
       <section class="box-head">
-         <span class="iconfont" @click="$router.push({path:'/self'})">&#xe68a;</span>
-         我的地址
+         <span class="iconfont" @click="$router.go(-1)">&#xe68a;</span>
+         选择地址
       </section>
       <section class="address-box" v-if="addrs.length>0">
-         <div class="self-address row" v-for="(a,k) in addrs" :key="k">
+         <div class="self-address row" v-for="(a,k) in addrs" :key="k" @click="chioce(k)">
+            <div class="true-box">
+               <span class="iconfont" v-if="current==k">&#xe645;</span>
+            </div>
             <div class="address-info">
                <p>
                   <span class="name">{{a.name}} </span>
@@ -17,8 +20,8 @@
                </p>
             </div>
             <div class="icon-address row-between">
-               <span class="iconfont" @click="edit(k)">&#xe606;</span>
-               <span class="iconfont" @click="remove(k)">&#xe603;</span>
+               <span class="iconfont" @click.stop="edit(k)">&#xe606;</span>
+               <span class="iconfont" @click.stop="remove(k)">&#xe603;</span>
             </div>
          </div>
       </section>
@@ -36,10 +39,12 @@ import { Dialog } from 'vant';
 export default {
    data(){
       return{
-         addrs:[]
+         addrs:[],
+         current:''
       }
    },
    mounted(){
+      this.current=this.$store.state.current;
       if(storage.get('isLogin'))
          this.addrs=this.$store.state.account.address; 
       else
@@ -57,6 +62,11 @@ export default {
       },
       edit(key){
          this.$router.push({path:'/address/edit',query:{key:key}})
+      },
+      chioce(k){
+         this.current=k;
+         this.$store.commit({type:'changeCurrent',key:k});
+         this.$router.go(-1);
       }
    },
    beforeRouteEnter(to,from,next){
@@ -87,6 +97,13 @@ export default {
       font-size:0.16rem;
       color:#999;
       padding:0.15rem;
+      .true-box{
+         width:0.4rem;
+         height:0.4rem;
+         line-height: 0.4rem;
+         align-self: center;
+         color:green;
+      }
       .address-info{
          flex:1 1;
          >p{

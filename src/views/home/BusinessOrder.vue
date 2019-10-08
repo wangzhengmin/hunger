@@ -27,7 +27,7 @@
          </ul>
       </section>
       <!-- 商品菜单 -->
-      <section class="row">
+      <section class="row fixd-menu">
          <div class="shop-menu">
             <ul>
                <li v-for="(m,k) in menu" :key="k" class="menu-item">
@@ -240,21 +240,20 @@ export default {
          let len=dom.children.length;
          let mar=parseFloat(window.getComputedStyle(dom.children[0],null).marginLeft);
          let maxWidth=len*(dom.children[0].offsetWidth+mar)-this.$refs.box.offsetWidth+2*mar;
-         let [startX,distance]=[0,0];
+         let [startX,distance,transX]=[0,0,0];
          dom.addEventListener('touchstart',function(e){
-         [startX,distance]=[0,0];
-         startX=e.touches[0].clientX;
+            [startX,distance]=[0,0];
+            startX=e.touches[0].clientX;
          })
          dom.addEventListener('touchmove',function(e){
             distance=e.touches[0].clientX-startX;
-            let transX=distance+parseFloat(window.getComputedStyle(dom,null).transform.substring(6).split(',')[4])||0;
-            
-            if(transX>-maxWidth&&transX<=0)
-               dom.style.transform=`translateX(${transX}px)`;
-            
+            distance+=transX;
+            if(distance<0&&distance>-maxWidth)
+               dom.style.transform=`translateX(${distance}px)`;
+           
          })
          dom.addEventListener('touchend',function(e){
-            
+            transX=distance;
          })
       },
       toAccount(){
@@ -280,6 +279,7 @@ export default {
     border-radius:0.05rem;
   }
 }
+// 推荐列表样式
 .recommond-box{
    overflow: hidden;
    .font-big{
@@ -305,9 +305,18 @@ export default {
     }
   }
 }
+// 商品菜单样式
+.fixd-menu{
+   height:100vh;
+   box-sizing: border-box;
+   padding-bottom: 0.6rem;
+   position: sticky;
+   top:4rem;
+   left:0;
+}
 .shop-menu{
   flex:0 0 0.8rem;
-  height: 6.27rem;
+  margin-top:0.4rem;
   overflow-y: scroll;
   background-color: #f8f8f8;
   .menu-item{
@@ -317,9 +326,8 @@ export default {
   }
 }
 .shop-sort{
+   margin-top:0.4rem;
   flex:1 1 5.87rem;
-  height: 6.27rem;
-  overflow-y: scroll;
   box-sizing: border-box;
   overflow-y: scroll;
   padding:0.1rem 0 0.1rem 0.1rem;

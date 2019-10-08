@@ -6,7 +6,7 @@
          <button class="login" @click="()=>this.$router.push({path:'/login'})">立即登录</button>
       </section>
       <section v-if="isLogin" class="order-box">
-         <div class="order-item" v-for="(o,k) in orders" :key="k">
+         <div class="order-item" v-for="(o,k) in orders" :key="k" @touchstart="start(k)" @touchmove="move()" @touchend="end()">
             <div class="row" style="border-bottom: 1px solid #eee;">
                <router-link :to="{path:'/business',query:{gid:o.gid}}">
                   <img :src="o.logo" alt="" class="order-logo">
@@ -15,7 +15,9 @@
                   <div class="bord">
                      <div class="row-between">
                         <p class="row">
-                           <span class="text-hide name">{{o.title}}</span>
+                           <router-link :to="{path:'/business',query:{gid:o.gid}}">
+                              <span class="text-hide name">{{o.title}}</span>
+                           </router-link>
                            <span class="iconfont">&#xe63a;</span>
                         </p>
                         <span class="status">{{o.action | action}}</span>
@@ -40,20 +42,32 @@
 
 <script>
 import storage from '@/module/storage.js';
+import { Dialog } from 'vant';
 export default {
    data(){
       return{
          isLogin:false,
-         orders:[]
+         orders:[],
+         time:0,
+         ismove:false,
+         timer:'',
+         order_k:''
       }
    },
    mounted(){
       this.isLogin=storage.get('isLogin')||false;
       if(this.isLogin){
          document.documentElement.style.background="#f5f5f5";
-         this.orders=this.$store.state.account.orders;
-        
+         this.orders=this.$store.state.account.orders;     
       }    
+   },
+   watch:{
+      time(n){
+         if(n>=600&&!this.ismove){
+            this.show();
+            this.time=0;
+         }
+      }
    },
    methods:{
       confirm(key){
@@ -64,6 +78,28 @@ export default {
          let data={logo,gid,charge,order,title,orders,cost}
          this.$store.commit({type:'changeOrder',action:'add',data});
          this.$router.push({path:'/business',query:{gid}});
+      },
+      show(){
+         Dialog.confirm({
+            title: '确认删除订单',
+            message: '删除的订单无法恢复'
+         }).then(() => {
+            let key=this.order_k;
+            this.$store.commit({type:'changeAccount',key,action:'remove-order'});
+         }).catch(() => {});
+      },
+      start(k){
+         this.order_k=k;
+         this.timer=setInterval(()=>{
+            this.time+=100;
+         },100)
+      },
+      move(){
+         this.ismove=true;
+      },
+      end(){
+         clearInterval(this.timer);
+         this.ismove=false;
       }
    },
    filters:{

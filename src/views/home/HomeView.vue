@@ -2,7 +2,7 @@
   <div class="home-box">
     <section class="addr row" @click="addr=true">
       <span class="iconfont">&#xe62f;</span>
-      <span class="addr-des text-hide">长征路南昌理工学院南昌校区</span>
+      <span class="addr-des text-hide">南昌某某校区某某宿舍</span>
       <div class="down"></div>
     </section>
     <section class="search-box" @click="toSearch()">
@@ -21,7 +21,7 @@
         </li>
       </ul>
       <div class="point row">
-        <a href="javascript:void(0)" v-for="i in menus.length" :key="i"></a>
+        <a href="javascript:void(0)" v-for="i in menus.length" :key="i" :class="[index==i-1?'point-active':'']"></a>
       </div>
     </section>
     <section class="sort-box">
@@ -100,7 +100,7 @@ export default {
           dom.style.transform=`translateX(${distance-index*width}px)`;
          
       })
-       dom.addEventListener('touchend',function(e){
+       dom.addEventListener('touchend',(e)=>{
           if(Math.abs(distance/width)>1/3){
             if(distance>0&&index>0)
               index--;
@@ -108,6 +108,7 @@ export default {
               index++;
           }
           dom.style.transform=`translateX(-${index*width}px)`;
+          this.index=index;
       })
     },
   },
@@ -233,10 +234,11 @@ export default {
     align-self:flex-end;
     margin-left:0.1rem;
   }
+  .point-active{
+    background-color:#fe7100;
+  }
 }
-.point-active{
-  background:#fe7100;
-}
+
 .sort-box{
    padding:0 0.1rem;
    .sort-item{

@@ -9,10 +9,12 @@ import BusinessView from './views/home/BusinessView.vue'  //商家详情页
 import AccountOrderView from './views/home/AccountOrderView.vue'  //结账页
 import ResultView from './views/home/ResultView.vue'  //搜索结果页
 import AddressAddView from './views/home/AddressAddView.vue'  //添加地址页
+import CheckoutAddressView from './views/home/CheckoutAddressView.vue'  //选择地址页
 
 import SelfView from './views/self/SelfView.vue'  //个人中心页
 import SelfAddressView from './views/self/SelfAddressView.vue'  //我的地址页
 import SelfInfoView from './views/self/SelfInfoView.vue'  //个人信息页
+import AddressEditView from './views/self/AddressEditView.vue'  //地址修改页
 
 import OrderView from './views/order/OrderView.vue' //订单页
 
@@ -32,31 +34,33 @@ export default new Router({
       tab:TabView
     }},
     {path:'/home',components:{
-      default:HomeView,
-      tab:TabView
+      default:HomeView, //首页
+      tab:TabView //底部菜单
     }},
-    {path:'/business',component:BusinessView},
-    {path:'/address/add',component:AddressAddView},
-    {path:'/search',component:SearchView,children:[
-      {path:'result',component:ResultView}
+    {path:'/business',component:BusinessView},   //商家详情页
+    {path:'/address/add',component:AddressAddView}, //添加地址页
+    {path:'/address/checkout',component:CheckoutAddressView}, //选择地址页
+    {path:'/search',component:SearchView,children:[ //搜索页
+      {path:'result',component:ResultView} //搜索结果页
     ],meta:{isShow:true}},
-    {path:'/account',component:AccountOrderView},
+    {path:'/account',component:AccountOrderView}, //结账页
     {path:'/find',components:{
-      default:FindView,
+      default:FindView, //发现页
       tab:TabView
     }},
-    {path:'/more',component:FindMoreView},
+    {path:'/more',component:FindMoreView},   //发现更多页
     {path:'/self',components:{
-      default:SelfView,
+      default:SelfView, //个人中心页
       tab:TabView
     }},
-    {path:'/self/address',component:SelfAddressView},
-    {path:'/self/info',component:SelfInfoView},
+    {path:'/self/address',component:SelfAddressView}, //我的地址页
+    {path:'/self/info',component:SelfInfoView}, //个人信息页
+    {path:'/address/edit',component:AddressEditView}, //地址修改页
     {path:'/order',components:{
-      default:OrderView,
+      default:OrderView,  //订单页
       tab:TabView
     }},
-    {path:'/login',component:LoginView},
+    {path:'/login',component:LoginView},  //登录页
   ]
 })
 

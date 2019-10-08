@@ -8,7 +8,7 @@ export default new Vuex.Store({
     list:[  //商家列表
       {gid:1,order:0,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕鸡饭',grade:3.5,num:200,start:15,time:50,charge:1,distance:0.8,menus:[
         {sort:'新店优惠活动',menus:[
-          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
+          {pid:1,title:'特色炸年糕1',des:'限购一份，凑单不送哦主要原料：脱脂酸奶',num:200,price:2,grade:'80%',discount:9.5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
           {pid:2,title:'特色炸年糕2',des:'脱脂酸奶',num:200,price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),isRecom:true,order:0},
         ]},
         {sort:'折扣套餐',menus:[
@@ -210,17 +210,18 @@ export default new Vuex.Store({
     ],
     orders:storage.get('orders')||{}, //选购信息
     account:storage.get('account')||{name:'wzm',tel:13677587758,orders:[  //账户信息
-      {time:1570425770556,cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕gfdghfdshfdghsfgh鸡饭',action:'await',orders:[
+      {time:1570425770556,cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕鸡饭',action:'await',orders:[
         {pid:1,title:'特色炸年糕1',price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),order:2},
       ]},
-      {time:1570327200000,action:'finish',cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕gfdghfdshfdghsfgh鸡饭',orders:[
+      {time:1570327200000,action:'finish',cost:18,charge:1,gid:1,order:2,logo:require('./assets/images/item1.jpeg'),title:'秘制手撕鸡饭',orders:[
         {pid:1,title:'特色炸年糕1',price:12,grade:'80%',discount:5,count:1,img:require('./assets/images/good1.jpeg'),order:2},
       ]},
     ],
     address:[
-      {name:'王',sex:'先生',tel:'13677587758',tag:'公司',addr:'学生宿舍13栋江西省学生宿舍13栋发多少积分'},
-      {name:'刘',sex:'',tel:'13677587758',tag:'',addr:'学生宿舍13栋江西省学生宿舍13栋发多少积分'}
-    ]}
+      {name:'王',sex:'先生',tel:'13677587758',tag:'公司',addr:'学生宿舍13栋江西省学舍13栋发',door:'13#216'},
+      {name:'刘',sex:'',tel:'13677587758',tag:'',addr:'学生宿舍13栋江西省分',door:'13#216'}
+    ]},
+    current:storage.get('current')||0
   },
   getters:{
 
@@ -229,16 +230,25 @@ export default new Vuex.Store({
     changeAccount(state,played){
       let action= played.action;
       switch(action){
-        case 'add':
+        case 'add': //添加地址
           state.account.address.push(played.address);
           break;
-        case 'remove':
+        case 'edit':  //修改地址
+          state.account.address[played.key]=played.address;
+          break;
+        case 'remove':  //删除地址
           state.account.address.splice(played.key,1);
           break;
-        case 'add-order':
+        case 'chioce':  //选择地址
+            state.account.address[played.key]=played.address;
+          break;
+        case 'add-order': //添加订单
           state.account.orders.unshift(played.order);
           break;
-        case 'finish':
+        case 'remove-order':
+          state.account.orders.splice(played.key,1);
+          break;
+        case 'finish':  //订单完成
           state.account.orders[played.key].action='finish';
       }
       storage.set('account',state.account);
@@ -256,6 +266,10 @@ export default new Vuex.Store({
       }
       console.log(state.orders);
       storage.set('orders',state.orders);
+    },
+    changeCurrent(state,played){
+      state.current=played.key;
+      storage.set('current',state.current);
     }
   },
   actions: {

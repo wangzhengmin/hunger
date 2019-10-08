@@ -2,7 +2,8 @@
    <div style="background-color: #f5f5f5;height:100vh">
       <section class="box-head">
          <span class="iconfont" @click="$router.go(-1)">&#xe68a;</span>
-         添加地址
+         编辑地址
+         <span class="position-right" @click="remove(k)">删除</span>
       </section>
       <section class="info-box">
          <div class="info-item row">
@@ -53,6 +54,7 @@
 
 <script>
 import {Toast} from 'vant';
+import { Dialog } from 'vant';
 export default {
    data(){
       return{
@@ -64,24 +66,32 @@ export default {
             door:'',
             tag:''
          },
-         from:""
+         key:''
       }
+   },
+   mounted(){
+      this.key=this.$route.query.key;
+      this.info=this.$store.state.account.address[this.key];
    },
    methods:{
       saveAddress(){
          if(this.info.name&&this.info.tel&&this.info.addr&&this.info.door){
-            this.$store.commit({type:'changeAccount',address:this.info,action:'add'});
-            this.$router.push({path:this.from})
+            this.$store.commit({type:'changeAccount',address:this.info,action:'edit'});
+            this.$router.go(-1);
          }
          else
             Toast('请填写完整信息');
+      },
+      remove(k){
+         Dialog.confirm({
+            title: '删除地址',
+            message: '确定删除该地址'
+         }).then(() => {
+            this.$store.commit({type:'changeAccount',key:k,action:'remove'});
+            this.$router.push({path:'/self/address'});
+         }).catch(() => {});
       }
    },
-   beforeRouteEnter(to,from,next){
-      next(vm=>{
-         vm.from=from.path;
-      })
-   }
 }
 </script>
 

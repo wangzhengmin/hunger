@@ -5,13 +5,13 @@
          确认订单
       </div>
       <div class="account-body">
-         <section class="addr">
+         <section class="addr" @click="$router.push({path:'/address/checkout'})">
             <p>订单配送至</p>
             <p class="row">
-              <span class="adr-bold">南昌理工学院(英雄主校区)xx栋xx</span>
+              <span class="adr-bold">{{this.current.addr+this.current.door}}</span>
               <span class="iconfont">&#xe63a;</span>
             </p>
-            <p>刘(先生) 13675654889</p>
+            <p>{{this.current.name}}({{this.current.sex}}) {{this.current.tel}}</p>
          </section>
          <section class="account-des">
             <div class="row">
@@ -81,10 +81,12 @@ import storage from '@/module/storage.js';
 export default {
    data(){
       return{
-         order:''
+         order:'',
+         current:''
       }
    },
    mounted(){
+      this.current=this.$store.state.account.address[this.$store.state.current];
       if(this.$route.query.gid){
          let gid=this.$route.query.gid;
          this.order=this.$store.state.orders['gid'+gid];

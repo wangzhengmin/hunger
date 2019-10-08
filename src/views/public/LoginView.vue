@@ -24,6 +24,7 @@
 
 <script>
 import storage from '@/module/storage.js';
+import {Toast} from 'vant';
 export default {
    data(){
       return{
@@ -39,6 +40,8 @@ export default {
          if(this.tel=="13677587758"&&this.yzm==123456){
             storage.set('isLogin',true);
             this.$router.push({path:this.from});
+         }else{ 
+         Toast('账号或密码错误');
          }
       },
       valid(){
