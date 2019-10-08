@@ -56,6 +56,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.filter-box{
+  top:0.9rem;
+}
 .row-center{
   padding:0.3rem 0;
   >img{

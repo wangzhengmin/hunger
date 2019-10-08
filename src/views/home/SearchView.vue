@@ -86,11 +86,14 @@ export default {
    left:0;
    background:white;
    padding-bottom: 0.1rem;
+   z-index:999;
+   height:0.9rem;
+   box-sizing: border-box;
 }
 .search-con{
    .icon-left{
       display: block;
-      margin:0.05rem;
+      padding:0.05rem;
       color:#999;
       font-weight:700;
       font-size:0.23rem;

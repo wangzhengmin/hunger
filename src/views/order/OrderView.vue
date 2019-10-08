@@ -65,6 +65,7 @@ export default {
       time(n){
          if(n>=600&&!this.ismove){
             this.show();
+            clearInterval(this.time);
             this.time=0;
          }
       }
