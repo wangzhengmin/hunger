@@ -30,13 +30,13 @@
       <section class="row fixd-menu">
          <div class="shop-menu">
             <ul>
-               <li v-for="(m,k) in menu" :key="k" class="menu-item">
+               <li v-for="(m,k) in menu" :key="k" :class="['menu-item',index==k?'menu-active':'']" @click="toMenu(k)">
                   {{m.sort}}
                   <span class="count" v-if="m.count">{{m.count}}</span>
                </li>
             </ul>
          </div>
-         <div class="shop-sort">
+         <div class="shop-sort" @scroll="menuScroll($event)" ref="box">
             <div v-for="(t,k) in list.menus" :key="k">
             <p class="sort-title">{{t.sort}}</p>
             <ul>
@@ -144,7 +144,8 @@ export default {
          list:{},
          show:false,
          current:'',
-         car:false
+         car:false,
+         index:0
       }
    },
    mounted(){
@@ -261,6 +262,22 @@ export default {
          this.$router.push({path:'/account',query:{gid}});
          let data={gid,orders:this.order,order,logo,charge,title,cost:this.cost};
          this.$store.commit({type:'changeOrder',data,action:'add'});
+      },
+      menuScroll(e){
+         let other=this.$refs.box.offsetTop;
+         let dom=e.target;
+         let scrollTop=dom.scrollTop;
+         let child=dom.children;
+         for(let i=0;i<child.length;i++){
+            if((scrollTop+other)>=child[i].offsetTop)
+               this.index=i;
+         }
+      },
+      toMenu(k){
+         this.index=k;
+         let dom=this.$refs.box
+         let other=dom.offsetTop;
+         dom.scrollTop=dom.children[k].offsetTop-other+10;
       }
    },
 }
@@ -311,7 +328,7 @@ export default {
    box-sizing: border-box;
    padding-bottom: 0.6rem;
    position: sticky;
-   top:4rem;
+   top:0;
    left:0;
 }
 .shop-menu{
@@ -324,13 +341,16 @@ export default {
     font-size:0.13rem;
     position: relative;
   }
+  .menu-active{
+     background:white;
+  }
 }
 .shop-sort{
    margin-top:0.4rem;
-  flex:1 1 5.87rem;
-  box-sizing: border-box;
-  overflow-y: scroll;
-  padding:0.1rem 0 0.1rem 0.1rem;
+   flex:1 1 5.87rem;
+   box-sizing: border-box;
+   overflow-y: scroll;
+   padding: 0 0.1rem;
   .sort-title{
     font-size:0.12rem;
     line-height: 0.5rem;
