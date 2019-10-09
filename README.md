@@ -9,7 +9,7 @@
 
 |                                         |                                            |                                       |
 |  ---                                    |  ---                                       |                                        |
-|  ![](./src/assets/images/首页2.png)     |  ![](./src/assets/images/首页2.png)        |  ![](./src/assets/images/搜索2.png)     |
+|  ![]('./src/assets/images/首页2.png')     |  ![](./src/assets/images/首页2.png)        |  ![](./src/assets/images/搜索2.png)     |
 |  ![](./src/assets/images/搜索3.png)     |  ![](./src/assets/images/发现.png)         |  ![](./src/assets/images/发现2.png)     |
 |  ![](./src/assets/images/订单.png)      |  ![](./src/assets/images/订单2.png)        |  ![](./src/assets/images/登录.png)      |
 |  ![](./src/assets/images/我的地址1.png)  |  ![](./src/assets/images/我的地址2.png)    |  ![](./src/assets/images/我的地址3.png)  |
