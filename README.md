@@ -5,17 +5,85 @@
 
 ## 项目图片预览(手机页面)
 
-
-
-|                                         |                                            |                                       |
-|  ---                                    |  ---                                       |                                        |
-|  ![]('./src/assets/images/首页2.png')     |  ![](./src/assets/images/首页2.png)        |  ![](./src/assets/images/搜索2.png)     |
-|  ![](./src/assets/images/搜索3.png)     |  ![](./src/assets/images/发现.png)         |  ![](./src/assets/images/发现2.png)     |
-|  ![](./src/assets/images/订单.png)      |  ![](./src/assets/images/订单2.png)        |  ![](./src/assets/images/登录.png)      |
-|  ![](./src/assets/images/我的地址1.png)  |  ![](./src/assets/images/我的地址2.png)    |  ![](./src/assets/images/我的地址3.png)  |
-|  ![](./src/assets/images/我的地址4.png)  |  ![](./src/assets/images/商家1.png)        |  ![](./src/assets/images/商家2.png)     |
-|  ![](./src/assets/images/商家3.png)     |  ![](./src/assets/images/商家4.png)        |  ![](./src/assets/images/商家5.png)     |
-|  ![](./src/assets/images/结账.png)     |  ![](./src/assets/images/我的.png)        |  ![](./src/assets/images/我的2.png)     |
+<table>
+  <tr>
+    <td>
+      <img src="./src/assets/images/搜索2.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/搜索3.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/发现.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/发现2.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/订单.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/订单2.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/登录.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/我的地址1.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/我的地址2.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/我的地址3.png" >
+    </td>
+    <td>
+      <img src="./src/assets/images/我的地址4.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/商家1.png" >
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/商家2.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/商家3.png" >
+    </td>
+    <td>
+      <img src="./src/assets/images/商家4.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/商家5.png" >
+    </td>
+    <td>
+      <img src="./src/assets/images/结账.png" >
+    </td>
+    <td>
+      <img src="./src/assets/images/我的.png">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./src/assets/images/我的2.png" >
+    </td>
+    <td>
+      <img src="./src/assets/images/首页.png">
+    </td>
+    <td>
+      <img src="./src/assets/images/首页2.png">
+    </td>
+  </tr>
+ </table>
 
 ## 总结
 > 对vue的使用又有了更深的理解,其中运用了vue的自定义指令，过滤器，组件通信，计算属性，侦听器，vueRouter（路由模块化，导航守卫，路由元信息），vuex等等。
